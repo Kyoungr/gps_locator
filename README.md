@@ -15,6 +15,10 @@ The purpose of this project was for me to get my accustomed to using external ap
 - "react-dom": "^16.11.0"
 - "react-scripts": "3.2.0"
 - "react-toastify": "^5.4.0"
+- "body-parser": "^1.19.0"
+- "express": "^4.17.1"
+- "nodemon": "^1.19.4"
+- "pusher": "^3.0.0"
 
 ## Usage
 This application makes use of [Google API](https://console.cloud.google.com/home/dashboard?project=gps-tracker-258020) and [PUSHER](https://dashboard.pusher.com/)
