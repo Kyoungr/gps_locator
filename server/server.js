@@ -9,9 +9,9 @@ const app = express();
 
 // initialize pusher
 let pusher = new Pusher({
-    appId: '893338',
-    key: 'c60e22e1a600d55c004e',
-    secret: '52038a98f4832c4dcb8d',
+    appId: 'YOUR_ID',
+    key: 'YOUR_KEY',
+    secret: 'YOUR_SECRET',
     cluster: 'us2',
     encrypted: true
 });
@@ -28,6 +28,13 @@ app.use((req, res, next) => {
     next();
 });
 
+
+/**
+ * handles requests to authenticate users joining the presence channel
+ *
+ * @param  req  
+ * @param  res 
+ */
 app.post('/pusher/auth', (req, res) => {
     let socketId = req.body.socket_id;
     let channel = req.body.channel_name;
@@ -42,6 +49,12 @@ app.post('/pusher/auth', (req, res) => {
     res.send(auth);
 });
 
+/**
+ * handles requests to trigger an event when a user updates their location
+ * @param path
+ * @param  req  
+ * @param  res 
+ */
 app.post('/update-location', (req, res) => {
     // trigger a new post event via pusher
     pusher.trigger('presence-channel', 'location-update', {

@@ -1,68 +1,67 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# CSCI495-C5
+
+## Description / Purpose
+The purpose of this project was for me to get my accustomed to using external apis while building React components and implementing them within a react web application. The longest part of this project was understanding the vast variety of Google map props and how they work together. For my job in nashville I will possibly be tasked with building services with React and Javascript so this project helped me gain working experience. I enjoyed using Google's map api and playing around with different components. 
+
+
+## Dependencies
+- "axios": "^0.19.0"
+- "google-map-react": "^1.1.5"
+- "nodemon": "^1.19.4"
+- "pusher-js": "^5.0.2"
+- "react": "^16.11.0"
+- "react-dom": "^16.11.0"
+- "react-scripts": "3.2.0"
+- "react-toastify": "^5.4.0"
+
+## Usage
+This application makes use of [Google API](https://console.cloud.google.com/home/dashboard?project=gps-tracker-258020) and [PUSHER](https://dashboard.pusher.com/)
+
+## Future Work
+This website is responive and visually pleasing but it lacks database connection and multiple map layers. In the future I will store user usage information and frequently visited locations. I am working on learning new frameworks as a whole but due to the time constrain I was unable to complete everything I had in mind.
+
+## What is your major and how this project is related to your major.
+I am an Information Technology/Information Systems double major with a full time offer as a software engineer. The company I will be working for along with many other companies use react and javascript for their front end languages. Building this web application allowed me to utilize my critial thinking skills and technical knowlege of software to build a simple but powerful web application. I also aspire to build my own website for my small business and this gave me the oppurtunity test out a possible frontend language. 
+
 ## Available Scripts
 
-In the project directory, you can run:
+```bash
+cd server
+npm install
+```
 
-### `npm start`
+- Start Backend Server
 
-Runs the app in the development mode.<br />
+```bash
+npm nodemon
+```
+
+## Start React Application
+- Run the command
+```bash
+cd gps_locator
+npm install
+```
+
+```bash
+npm nodemon
+```
+
+
+
+Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3128](http://localhost:3128) to view server.
 
-The page will reload if you make edits.<br />
+
+The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

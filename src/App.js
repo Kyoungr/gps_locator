@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
 import axios from 'axios';
 import Pusher from 'pusher-js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const MY_API_KEY = "AIzaSyBX69NXhGj4ymeMl2otJRvycvHb_85hPYw"
+const MY_API_KEY = "YOUR_GOOGLE_API_KEY"
 
 
 const mapStyles = {
@@ -48,8 +44,14 @@ class App extends Component {
     };
   }
 
+  /**
+   * pusher:subscription_succeeded event that is triggered from the backend server when a user successfully subscribes to a presence channel .
+   * location-update event which is triggered when another user’s location is updated.
+   * pusher:member_removed event that is triggered when another user goes offline.
+   * pusher:member_added event that is triggered when a new user comes online.
+   */
   componentDidMount() {
-    let pusher = new Pusher('c60e22e1a600d55c004e', {
+    let pusher = new Pusher('YOUR_KEY', {
       authEndpoint: "http://localhost:3128/pusher/auth",
       cluster: "us2"
     });
@@ -90,6 +92,12 @@ class App extends Component {
     })
   }
 
+
+  /**
+   * first checks if the application can access the geolocation property of the browser and alerts the user if it can’t. 
+   * The navigator.geolocation.watchPosition() method gets the users’ location as the user moves and then updates the component states with the most up to date location of the user. 
+   * Afterwards, a request is made to the backend server to trigger a location-update event so that other signed in users can be notified with the latest location.
+   */
   getLocation = () => {
     if ("geolocation" in navigator) {
       // get the longitude & latitude then update the map center as the new user location
@@ -119,6 +127,10 @@ class App extends Component {
     }
   }
 
+
+  /**
+   * Alerts the user of new online users and how many are on the channel.
+   */
   notify = () => toast(`Users online : ${Object.keys(this.state.users_online).length}`, {
     position: "top-right",
     autoClose: 3000,
@@ -128,17 +140,6 @@ class App extends Component {
     draggable: true,
     type: 'info'
   });
-
-  handleChange = address => {
-    this.setState({ address });
-  };
-
-  handleSelect = address => {
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
-  };
 
   render() {
     var locationMarkers = Object.keys(this.state.locations).map((username, id) => {
@@ -155,44 +156,6 @@ class App extends Component {
 
     return (
       <div>
-         <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
-              })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
         <GoogleMap
           style={mapStyles}
           bootstrapURLKeys={{ key:MY_API_KEY }}
